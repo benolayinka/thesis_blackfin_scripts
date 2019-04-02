@@ -1,0 +1,4 @@
+TESTNAME "bubblesort"
+int a[5] = {5,4,3,2,1};
+int n = sizeof(a)/sizeof(int);
+benchmark(bubble_sort, &a, n, NUMBENCHMARKS);

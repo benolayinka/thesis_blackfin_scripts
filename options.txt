@@ -1,0 +1,4 @@
+target=Blackfin CS Emulator
+platform=ADSP-BF706 EZ-KIT Mini via Debug Agent
+processor=ADSP-BF706
+core=0,C:\Users\teenage\cces\2.8.3\bf706ez\Debug\bf706ez.dxe

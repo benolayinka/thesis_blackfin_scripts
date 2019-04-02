@@ -1,0 +1,4 @@
+target=ChipFactory Simulator
+platform=ADSP-BF706 Functional-Sim
+processor=ADSP-BF706
+core=0,C:\Users\teenage\cces\2.8.3\bf706ez\Debug\bf706ez.dxe
