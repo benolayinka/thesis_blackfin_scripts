@@ -21,7 +21,8 @@ preamble = r"""
 
 #define TEST_NAME_LENGTH 50
 
-#define RANDOM_DATA_SIZE
+#define RANDOM_DATA_SIZE 10
+#define RANDOM_DATA -486482214,-418856181,930282014,-347347496,-138348819,-988261325,815146594,-867907548,408358427,-669950624
 
 #if defined SIM
 #define NUMBENCHMARKS 1
@@ -99,9 +100,8 @@ void ddot_r(int data[], int numWords)
 
 int main(int argc, char *argv[])
 {
-int random_data[] = {-847015715,-343903727,-412486625,-506734452,-23523361,-909264609,-673546305,-323628428,-817554816,-505072734,-768523091,-916794842,-535232981,-842597011,-757806740,-992203046,-730461689,-800417728,44638536,-921554565};
-//int random_data[RANDOM_DATA_SIZE];
-//for(int i=0; i<RANDOM_DATA_SIZE; i++) random_data[i] = rand(); 
+int random_data[] = {RANDOM_DATA};
+int n = RANDOM_DATA_SIZE;
 """
 
 postamble = r"""
@@ -145,20 +145,20 @@ tests = []
 name = "bubblesort1"
 instrs = '''
         int *a = &random_data;
-        int n = 5;
-        benchmark(bubble_sort, a, n);
+        int num = 5;
+        benchmark(bubble_sort, a, num);
 '''
 tests.append(Test(name, instrs))
 
 name = "ddot1"
 instrs = '''
-        int n = 5;
+        int num = 5;
         int *dx = &random_data;
         int incx = 1;
         int *dy = &random_data;
         int incy = 1;
         int data[] = {dx, incx, dy, incy};
-        benchmark(ddot_r, &data, n);
+        benchmark(ddot_r, &data, num);
 '''
 tests.append(Test(name, instrs))
 

@@ -34,22 +34,6 @@ R3.H = (A1 += R1.H * R2.L), A0 += R1.L * R2.L ;
 R0 >>= 0x04 ;
 R0 <<= 0x04 ;
 R0 <<= R2 ;
-R1.H = R0.L << 0x04 ; // Perform left shift by 4
-R1 = LSHIFT R0 by R2.L ; // Perform shift
-R1 = ASHIFT R0 by R2.L ; // Perform shift
-R1 = ROT R0 by R2.L ; // Perform rotation
-BITCLR ( R0, 6 ) ; 
-BITSET ( R2, 9 ) ; // Sets bit 9 of R2
-BITTGL ( R3, 2 ) ; // Toggles bit 2 of R3
-CC = BITTST ( R3, 0 ) ; // Puts bit 0 of R3 in ASTAT.CC
-R3 = EXTRACT ( R0 , R1.L ) ( Z ) ; // R3 = 0x00000ABB
-R3 = EXTRACT ( R0 , R1.L ) ( X ) ; // R3 = 0xFFFFFABB
-R3 = DEPOSIT ( R0 , R1 ) ; // R3 = 0xA333CCDD
-R3 = DEPOSIT ( R0 , R1 ) ( X ) ; // R3 = 0x0333CCDD
-R2 = PACK(R0.L, R0.H); /* R2 = 0x33441122 */
-R3 = PACK(R1.L, R0.H); /* R3 = 0x77881122 */
-R4 = BYTEPACK(R0, R1); /* R4 = 0x66882244 */
-(R6, R7) = BYTEUNPACK R1:0;
 
 //MOVE
 R3 = [P0];
@@ -78,6 +62,7 @@ R0 = [ I2 ] ; //ben removed post
 STI R5 ;
 CLI R5 ;
 
+//PC=0;JUMP(PC+P0);
 //JUMP
 //IF CC JUMP dest_address ;
 //IF !CC JUMP other_addr ;

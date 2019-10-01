@@ -1,0 +1,75 @@
+notest,279
+R3.H = R1.H + R2.L (NS) ;,300
+R3 = R1 +|- R2 (S) ; ,301
+R3 = R0 +|+ R1 COMMA  R2 = R0 -|- R1 (S) ;,301
+R3 = R1 + R2 (NS) ; ,300
+P3 = P1 + SP ; ,292
+R3 = R1 + R2 COMMA  R4 = R1 - R2 (NS); ,302
+R3 = A0 + A1 COMMA  R4 = A0 - A1 (S); ,302
+A1 = R1 (X) COMMA  A0 = R0 (X); ,301
+A1 = R1 (Z) COMMA  A0 = R0 (Z); ,301
+A1 = A0 = 0; ,301
+A1:0 += R2 * R3 ;,302
+R0 = R1 * R2 (FU) ;,302
+R1 = R2 * R3 (IU COMMA  NS) ;,302
+R1:0 = R1 * R2 ;,293
+R1 = cmul(R2 COMMA  R3) ;,302
+R1 = cmul(R2 COMMA  R3)(IS);,302
+R1:0 = cmul(R2 COMMA  R3) ;,303
+R0 *= R1 ;,288
+A1 += R3.H * R4.H ; ,301
+R0.L = R1.L * R2.L (FU) ;,301
+R0.H = R2.H * R3.H (IU) ;,302
+R0 = R1.L * R2.L ; ,301
+A1 += R1.H * R2.L COMMA  A0 += R1.L * R2.H ; ,301
+R3.H = (A1 += R1.H * R2.L) COMMA  R3.L = (A0 += R,302
+R3 = (A1 += R1.H * R2.L) COMMA  R2 = (A0 += R1.L ,293
+R3.H = (A1 += R1.H * R2.L) COMMA  A0 += R1.L * R2,302
+R0 >>= 0x04 ;,291
+R0 <<= 0x04 ;,291
+R0 <<= R2 ;,291
+R1.H = R0.L << 0x04 ; ,300
+R1 = LSHIFT R0 by R2.L ; ,300
+R1 = ASHIFT R0 by R2.L ; ,300
+R1 = ROT R0 by R2.L ; ,300
+BITCLR ( R0 COMMA  6 ) ; ,291
+BITSET ( R2 COMMA  9 ) ; ,291
+BITTGL ( R3 COMMA  2 ) ; ,293
+CC = BITTST ( R3 COMMA  0 ) ; ,291
+R3 = EXTRACT ( R0  COMMA  R1.L ) ( Z ) ; ,300
+R3 = EXTRACT ( R0  COMMA  R1.L ) ( X ) ; ,300
+R3 = DEPOSIT ( R0  COMMA  R1 ) ; ,300
+R3 = DEPOSIT ( R0  COMMA  R1 ) ( X ) ; ,300
+R2 = PACK(R0.L COMMA  R0.H); ,299
+R3 = PACK(R1.L COMMA  R0.H); ,300
+R4 = BYTEPACK(R0 COMMA  R1); ,300
+(R6 COMMA  R7) = BYTEUNPACK R1:0;,301
+R3 = [P0];,300
+R3 = [I0];,301
+R0 = [ P3 ];,300
+R0.L = W [ I3 ]; ,301
+R0 = B [ P3 ] (Z) ; ,302
+R0 = [ I2 ] ;,301
+R0.H = W [ I2 ] ;,301
+R0.H = W [ I2 ] ;,301
+B [ P1 ] = R0 ;,299
+R0 = W[P1] (Z) ; ,300
+R1 = W[P1] (X) ; ,301
+R2 = B[P1] (Z) ; ,302
+R3 = B[P1] (X) ; ,302
+R0 = W [ P1 ] (Z) ; ,301
+R0 = [ I2 ] ; ,300
+STI R5 ;,290
+CLI R5 ;,290
+NOP;,289
+MNOP;,299
+R5 = R0 + R1(ns) || R2 = [P2] || R3 = [I1] ; ,313
+a0 = r3.h * r2.l || r1 = [p3] || r4 = [i2] ;,314
+a0 = r3.h * r2.l  COMMA  a1 = r3.l * r2.h ;,302
+R5 = R0 + R1(ns) || R2 = [P2] || R3 = [I1] ;,313
+MNOP || R2 = [I0] || R3 = [I1] ;,312
+R5 = R2 + R3 (NS) || R2 = [I0] || R3 = [I1] ;,314
+R7 = R5 + R7 (NS) || [I0] = R5;,317
+A0 = 0 || R0.H = W[I0] || R1.L = W[I1];,313
+A0+= R0.H * R1.L || R0.H = W[I0] || R1.L = W[I1];,315
+end,280

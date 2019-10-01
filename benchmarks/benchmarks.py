@@ -7,14 +7,8 @@ import re
 import json
 import os
 
-sim = False
-
-cfile = r"C:\Users\teenage\cces\2.8.3\benchmarks\src\benchmarks.c"
-from generatebenchmarks import generate_benchmarks
-try:
-    os.replace(cfile, cfile+'old')
-except: pass
-generate_benchmarks(cfile)
+sim = True
+total_time = []
 
 WATCHDOG = 100 #maximum number of samples (seconds) - useful if bf hangs
 
@@ -69,8 +63,10 @@ for i in range(0, 100):
 
     try:
         if sim:
+            start_time = time.time()
             cces_runner = subprocess.Popen([r"C:\Analog Devices\Crosscore Embedded Studio 2.8.3\CCES_runner.exe", "-@", "options_sim.txt"], stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
             cces_runner.wait(timeout=WATCHDOG)
+            total_time.append(time.time()-start_time)
         else:
             cces_runner = subprocess.Popen([r"C:\Analog Devices\Crosscore Embedded Studio 2.8.3\CCES_runner.exe", "-@", "options.txt"], stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
             if cces_runner.poll():
